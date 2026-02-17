@@ -1,0 +1,352 @@
+================================================================================
+SMART CONDITIONAL LOI TEMPLATE
+For Both Lease AND Purchase Transactions
+================================================================================
+
+INSTRUCTIONS:
+1. Copy everything below into Microsoft Word
+2. Keep all {variable} placeholders and conditional tags exactly as written
+3. Save as template.docx in document-service folder
+4. The template will automatically show/hide sections based on transaction_type
+
+CONDITIONAL SYNTAX:
+- {#is_lease}...{/is_lease} - Shows only for lease transactions
+- {#is_purchase}...{/is_purchase} - Shows only for purchase transactions
+
+================================================================================
+
+
+[Center, Bold, 16pt]
+LETTER OF INTENT
+
+[Right align]
+Date: {current_date}
+
+[Left align]
+TO:         {seller_landlord_name}
+            {seller_landlord_entity}
+
+FROM:       {buyer_tenant_name}
+            {buyer_tenant_entity}
+
+RE:         Letter of Intent - {transaction_type}
+            {property_address}
+
+
+Dear {seller_landlord_name}:
+
+{#is_lease}
+This Letter of Intent ("LOI") outlines the principal terms pursuant to which {buyer_tenant_name} (the "Tenant") proposes to enter into a Lease agreement with {seller_landlord_name} (the "Landlord") for the premises described below.
+{/is_lease}
+
+{#is_purchase}
+This Letter of Intent ("LOI") outlines the principal terms pursuant to which {buyer_tenant_name} (the "Buyer") proposes to purchase the property described below from {seller_landlord_name} (the "Seller").
+{/is_purchase}
+
+[Bold, Underline]
+1. PROPERTY DESCRIPTION
+
+Address:                {property_address}
+Property Type:          {property_type}
+Approximate Size:       {square_footage} square feet
+Description:            {property_description}
+
+[Bold, Underline]
+2. PARTIES TO THE TRANSACTION
+
+{#is_lease}
+Tenant:
+{/is_lease}
+{#is_purchase}
+Buyer:
+{/is_purchase}
+    Name:               {buyer_tenant_name}
+    Legal Entity:       {buyer_tenant_entity}
+
+{#is_lease}
+Landlord:
+{/is_lease}
+{#is_purchase}
+Seller:
+{/is_purchase}
+    Name:               {seller_landlord_name}
+    Legal Entity:       {seller_landlord_entity}
+
+[Bold, Underline]
+3. FINANCIAL TERMS
+
+Transaction Type:       {transaction_type}
+
+{#is_purchase}
+Purchase Price:         {purchase_price}
+
+Earnest Money Deposit:  10% of purchase price to be deposited within five (5)
+                        business days of mutual execution of this LOI
+
+Closing Date:           {closing_date}
+{/is_purchase}
+
+{#is_lease}
+Base Rent:              {base_rent} per month
+                        ({rent_per_sqft} per square foot annually)
+
+Annual Escalation:      {escalation_rate} per annum, commencing on the first
+                        anniversary of the Lease Commencement Date
+
+Lease Term:             {lease_term}
+
+Free Rent Period:       {free_rent_period} of free base rent for tenant
+                        improvements and relocation
+{/is_lease}
+
+Security Deposit:       {security_deposit}
+
+{#is_lease}
+Operating Expenses:     {operating_expenses} basis
+
+Tenant Improvements:    Landlord to provide a tenant improvement allowance of
+                        {tenant_improvement_allowance}
+{/is_lease}
+
+{#is_purchase}
+Property Condition:     Property to be sold in "as-is" condition, subject to
+                        Buyer's inspection rights during due diligence period
+{/is_purchase}
+
+[Bold, Underline]
+4. IMPORTANT DATES AND TIMELINE
+
+LOI Expiration:         This LOI shall expire on {loi_expiration_date} unless
+                        extended in writing by both parties
+
+Due Diligence Period:   {due_diligence_period} from the {#is_purchase}execution
+                        of a definitive purchase agreement{/is_purchase}{#is_lease}
+                        execution of a definitive lease agreement{/is_lease}
+
+{#is_lease}
+Lease Commencement:     The earlier of (i) {lease_commencement_date}, or
+                        (ii) the date Tenant opens for business
+{/is_lease}
+
+{#is_purchase}
+Closing Date:           Anticipated closing date is {closing_date}, subject to
+                        completion of due diligence and satisfaction of all
+                        contingencies
+{/is_purchase}
+
+[Bold, Underline]
+5. CONTINGENCIES
+
+This Letter of Intent is expressly contingent upon the satisfaction of the following conditions:
+
+A. Financing:           {financing_contingency} - {#is_purchase}Subject to Buyer
+                        obtaining financing{/is_purchase}{#is_lease}Subject to Tenant
+                        obtaining financing{/is_lease} on terms acceptable to
+                        {#is_purchase}Buyer{/is_purchase}{#is_lease}Tenant{/is_lease}
+
+B. Inspection:          {inspection_contingency} - {#is_purchase}Subject to Buyer's{/is_purchase}
+                        {#is_lease}Subject to Tenant's{/is_lease} satisfactory review
+                        and approval of the physical condition of the
+                        {#is_purchase}Property{/is_purchase}{#is_lease}Premises{/is_lease}
+
+C. Environmental:       {environmental_contingency} - {#is_purchase}Subject to Buyer's{/is_purchase}
+                        {#is_lease}Subject to Tenant's{/is_lease} satisfactory review
+                        of Phase I Environmental Site Assessment
+
+D. Zoning:              {zoning_approval} - Subject to verification that the
+                        {#is_purchase}Property is{/is_purchase}{#is_lease}Premises are{/is_lease}
+                        properly zoned for {#is_purchase}Buyer's{/is_purchase}
+                        {#is_lease}Tenant's{/is_lease} intended use
+
+{#is_purchase}
+E. Title:               Subject to Buyer's approval of title commitment showing
+                        marketable title free of liens and encumbrances, except
+                        those approved by Buyer
+{/is_purchase}
+
+F. Additional Contingencies:
+{custom_contingencies}
+
+[Bold, Underline]
+6. TRANSACTION COSTS
+
+Broker Commission:      {broker_commission_rate} of total {#is_purchase}purchase price{/is_purchase}
+                        {#is_lease}lease value{/is_lease} to be paid by
+                        {broker_paid_by} upon {#is_purchase}closing{/is_purchase}
+                        {#is_lease}lease execution{/is_lease}
+
+Legal Fees:             {legal_fees_allocation}
+
+{#is_purchase}
+Title Insurance:        To be paid by {title_insurance_paid_by}
+
+Closing Costs:          All closing costs, including transfer taxes, recording
+                        fees, and escrow fees, shall be allocated in accordance
+                        with local custom and practice
+{/is_purchase}
+
+{#is_lease}
+Tenant Improvements:    {tenant_improvement_allowance}
+{/is_lease}
+
+[Bold, Underline]
+7. USE OF {#is_purchase}PROPERTY{/is_purchase}{#is_lease}PREMISES{/is_lease}
+
+{#is_lease}
+Tenant shall use the Premises for general {property_type} purposes and other lawful
+uses consistent with the property type and local zoning regulations.
+{/is_lease}
+
+{#is_purchase}
+Buyer intends to use the Property for general {property_type} purposes, subject to
+compliance with all applicable laws, regulations, and zoning requirements.
+{/is_purchase}
+
+[Bold, Underline]
+8. {#is_purchase}PURCHASE AGREEMENT{/is_purchase}{#is_lease}LEASE DOCUMENT{/is_lease}
+
+The parties agree to negotiate in good faith a mutually acceptable definitive
+{#is_purchase}purchase{/is_purchase}{#is_lease}lease{/is_lease} agreement based on
+the terms outlined in this LOI. The definitive {#is_purchase}agreement{/is_purchase}
+{#is_lease}lease{/is_lease} shall contain standard commercial {#is_purchase}real
+estate purchase{/is_purchase}{#is_lease}lease{/is_lease} provisions including, but
+not limited to:
+
+{#is_lease}
+• Maintenance and repair obligations
+• Insurance requirements
+• Indemnification provisions
+• Default provisions and remedies
+• Assignment and subletting restrictions
+• Force majeure clause
+• Subordination, non-disturbance, and attornment agreement (SNDA)
+{/is_lease}
+
+{#is_purchase}
+• Representations and warranties
+• Closing conditions
+• Risk of loss provisions
+• Default and remedies
+• Prorations and adjustments
+• Assignment restrictions
+• Escrow provisions
+{/is_purchase}
+
+[Bold, Underline]
+9. DUE DILIGENCE
+
+During the due diligence period, {#is_purchase}Buyer{/is_purchase}{#is_lease}Tenant{/is_lease}
+shall have the right to:
+
+• Conduct physical inspections of the {#is_purchase}Property{/is_purchase}{#is_lease}Premises{/is_lease}
+• Review all material documents relating to the Property
+• Verify compliance with applicable laws and regulations
+• Confirm the availability of necessary utilities and services
+{#is_lease}• Review and approve the final space plan and specifications{/is_lease}
+{#is_purchase}• Conduct environmental assessments (Phase I and Phase II if necessary){/is_purchase}
+{#is_purchase}• Review and approve title commitment{/is_purchase}
+{#is_purchase}• Review all leases, contracts, and agreements affecting the Property{/is_purchase}
+
+{#is_purchase}Seller{/is_purchase}{#is_lease}Landlord{/is_lease} agrees to cooperate
+with {#is_purchase}Buyer's{/is_purchase}{#is_lease}Tenant's{/is_lease} due diligence
+efforts and to provide reasonable access to the {#is_purchase}Property{/is_purchase}
+{#is_lease}Premises{/is_lease} and all requested documentation.
+
+[Bold, Underline]
+10. ADDITIONAL TERMS AND CONDITIONS
+
+{additional_terms}
+
+[Bold, Underline]
+11. EXCLUSIVITY
+
+During the period commencing on the date of acceptance of this LOI and ending on
+{loi_expiration_date}, {#is_purchase}Seller{/is_purchase}{#is_lease}Landlord{/is_lease}
+agrees not to solicit, encourage, or negotiate with any other party regarding a
+{#is_purchase}sale{/is_purchase}{#is_lease}lease{/is_lease} of the {#is_purchase}
+Property{/is_purchase}{#is_lease}Premises{/is_lease}.
+
+[Bold, Underline]
+12. CONFIDENTIALITY
+
+The parties agree to maintain the confidentiality of this LOI and the terms contained
+herein, except as may be required by law or as necessary to complete the transaction
+contemplated hereby.
+
+[Bold, Underline]
+13. BINDING EFFECT
+
+THIS LETTER OF INTENT IS INTENDED TO BE NON-BINDING, except for Sections 11 (Exclusivity),
+12 (Confidentiality), 13 (Binding Effect), and 14 (Governing Law), which shall be binding
+upon the parties. This LOI outlines the preliminary understanding between the parties and
+is subject to the execution of a definitive {#is_purchase}purchase{/is_purchase}
+{#is_lease}lease{/is_lease} agreement containing terms and conditions mutually acceptable
+to both parties. Neither party shall have any obligation to proceed with the transaction
+unless and until such definitive agreement is executed and delivered.
+
+The parties agree to negotiate in good faith and use commercially reasonable efforts to
+execute a definitive agreement within thirty (30) days of the date of this LOI.
+
+[Bold, Underline]
+14. GOVERNING LAW
+
+This Letter of Intent shall be governed by and construed in accordance with the laws of
+the jurisdiction in which the Property is located.
+
+[Bold, Underline]
+15. ENTIRE AGREEMENT
+
+This LOI supersedes all prior discussions, negotiations, and agreements between the
+parties relating to the subject matter hereof.
+
+
+If the foregoing accurately reflects our mutual understanding, please sign below and
+return a copy of this Letter of Intent at your earliest convenience.
+
+Respectfully submitted,
+
+
+_____________________________________     Date: ________________
+{buyer_tenant_name}
+
+
+ACCEPTED AND AGREED:
+
+
+_____________________________________     Date: ________________
+{seller_landlord_name}
+
+
+[Italic, 10pt]
+Broker Information:
+{broker_information}
+
+
+[Italic, 9pt, Gray]
+---
+This Letter of Intent is not intended to be a binding agreement except as specifically
+noted in Section 13. The parties acknowledge that this LOI is subject to review and
+approval by their respective legal counsel and that no binding obligation shall arise
+unless and until a definitive {#is_purchase}purchase{/is_purchase}{#is_lease}lease{/is_lease}
+agreement is executed by both parties.
+---
+
+================================================================================
+END OF TEMPLATE
+================================================================================
+
+NOTE ON CONDITIONAL TAGS:
+- {#is_lease}...{/is_lease} - Content only shows when transaction_type contains "lease"
+- {#is_purchase}...{/is_purchase} - Content only shows when transaction_type contains "purchase"
+- When you paste into Word, these tags should remain as plain text
+- docxtemplater will process them automatically during generation
+
+FORMATTING GUIDE:
+1. Title: Center, Bold, 16pt
+2. Section headers (1, 2, 3...): Bold, Underline, 12pt
+3. Body text: 11pt, Justified
+4. Date: Right-aligned at top
+5. Signature lines: Leave 3-4 blank lines above
+6. Footer: Small, Italic, Gray
+
+================================================================================
