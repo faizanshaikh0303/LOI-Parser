@@ -146,7 +146,7 @@ export default function LOIReview({ initialTranscript = '' }: LOIReviewProps) {
               </div>
               <div className="ml-3">
                 <h3 className="text-sm font-medium text-yellow-800">
-                  {lowConfidenceFields.length} field{lowConfidenceFields.length > 1 ? 's' : ''} with low confidence
+                  Some fields have low confidence
                 </h3>
                 <div className="mt-2 text-sm text-yellow-700">
                   <p>

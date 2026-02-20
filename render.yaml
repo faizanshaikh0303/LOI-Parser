@@ -19,7 +19,7 @@ services:
     name: loi-document-service
     runtime: node
     rootDir: document-service
-    buildCommand: npm install
+    buildCommand: npm install && node generate-template.js
     startCommand: npm start
     envVars:
       - key: NODE_ENV
