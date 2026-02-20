@@ -272,7 +272,8 @@ Return ONLY the JSON object, no markdown or explanation."""
         except Exception as e:
             raise RuntimeError(f"Error extracting LOI fields with confidence: {e}")
 
-    def create_mock_loi(self) -> LOIFields:
+    @staticmethod
+    def create_mock_loi() -> LOIFields:
         """Create a mock LOI for testing"""
         from datetime import date, timedelta
 

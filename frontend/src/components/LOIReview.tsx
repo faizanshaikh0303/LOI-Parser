@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { LOIFields } from '../types';
+import { LEASE_TRANSCRIPT } from '../data/mockTranscript';
 
 interface LOIReviewProps {
   initialTranscript?: string;
@@ -66,7 +67,7 @@ export default function LOIReview({ initialTranscript = '' }: LOIReviewProps) {
       setLoiData(data.data);
       setFieldConfidences(data.field_confidences || {});
       setLowConfidenceFields(data.low_confidence_fields || []);
-      setTranscript('Mock data loaded - Sample CRE transaction');
+      setTranscript(LEASE_TRANSCRIPT);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load mock');
     } finally {

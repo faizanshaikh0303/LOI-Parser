@@ -117,8 +117,7 @@ def parse_mock():
         ParseResponse with mock LOI data
     """
     try:
-        extractor = LOIExtractionService()
-        mock_loi = extractor.create_mock_loi()
+        mock_loi = LOIExtractionService.create_mock_loi()
 
         return ParseResponse(
             success=True,
