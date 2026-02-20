@@ -7,6 +7,7 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const BASE_URL = process.env.SERVICE_URL || `http://localhost:${PORT}`;
 
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
@@ -150,7 +151,7 @@ app.post('/generate', async (req, res) => {
     fs.writeFileSync(filepath, buffer);
 
     // Return download URL
-    const downloadUrl = `http://localhost:${PORT}/downloads/${filename}`;
+    const downloadUrl = `${BASE_URL}/downloads/${filename}`;
 
     res.json({
       success: true,
