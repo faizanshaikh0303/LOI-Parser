@@ -1,5 +1,21 @@
 services:
   - type: web
+    name: loi-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: DOCUMENT_SERVICE_URL
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+
+  - type: web
     name: loi-document-service
     runtime: node
     rootDir: document-service
@@ -9,4 +25,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: SERVICE_URL
-        sync: false  # Set this manually in the Render dashboard to your service's public URL
+        sync: false
