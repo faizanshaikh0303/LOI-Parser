@@ -120,12 +120,6 @@ export default function LOIReview({ initialTranscript = '' }: LOIReviewProps) {
     setLoiData(newData);
   };
 
-  const getFieldConfidence = (fieldPath: string): { isLow: boolean; confidence?: number } => {
-    const confidence = fieldConfidences[fieldPath];
-    const isLow = lowConfidenceFields.includes(fieldPath);
-    return { isLow, confidence };
-  };
-
   // Helper to add confidence props to any Input
   const confidenceProps = { fieldConfidences, lowConfidenceFields };
 
@@ -484,46 +478,6 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
-// Wrapper component that automatically adds confidence to Input
-interface ConfidenceInputProps {
-  label: string;
-  value: string | number;
-  onChange: (value: string) => void;
-  fieldPath: string;
-  fieldConfidences: Record<string, number>;
-  lowConfidenceFields: string[];
-  type?: string;
-  prefix?: string;
-  suffix?: string;
-}
-
-function ConfidenceInput({
-  label,
-  value,
-  onChange,
-  fieldPath,
-  fieldConfidences,
-  lowConfidenceFields,
-  type,
-  prefix,
-  suffix
-}: ConfidenceInputProps) {
-  const confidence = fieldConfidences[fieldPath];
-  const isLowConfidence = lowConfidenceFields.includes(fieldPath);
-
-  return (
-    <Input
-      label={label}
-      value={value}
-      onChange={onChange}
-      type={type}
-      prefix={prefix}
-      suffix={suffix}
-      confidence={confidence}
-      isLowConfidence={isLowConfidence}
-    />
-  );
-}
 
 interface InputProps {
   label: string;
