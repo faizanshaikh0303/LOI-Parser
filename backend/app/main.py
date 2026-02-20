@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import BackgroundTasks, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Dict, List
@@ -53,9 +53,19 @@ def root():
     }
 
 
+async def _ping_document_service():
+    """Fire-and-forget ping to wake the document service (Render free tier)"""
+    try:
+        async with httpx.AsyncClient() as client:
+            await client.get(f"{settings.document_service_url}/health", timeout=5.0)
+    except Exception:
+        pass
+
+
 @app.get("/health")
-def health_check():
-    """Health check with service status"""
+async def health_check(background_tasks: BackgroundTasks):
+    """Health check with service status. Also wakes the document service."""
+    background_tasks.add_task(_ping_document_service)
     return {
         "status": "healthy",
         "groq_configured": bool(settings.groq_api_key),
