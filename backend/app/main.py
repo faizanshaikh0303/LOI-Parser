@@ -57,10 +57,11 @@ def root():
 
 
 async def _ping_document_service():
-    """Fire-and-forget ping to wake the document service (Render free tier)"""
+    """Fire-and-forget ping to wake the document service (Render free tier).
+    Uses a long timeout so Render has time to boot a cold instance (~30-60 s)."""
     try:
         async with httpx.AsyncClient() as client:
-            await client.get(f"{settings.document_service_url}/health", timeout=5.0)
+            await client.get(f"{settings.document_service_url}/health", timeout=70.0)
     except Exception:
         pass
 
