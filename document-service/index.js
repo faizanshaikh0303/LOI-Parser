@@ -161,10 +161,14 @@ app.post('/generate', async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Document generation error:', error);
+    console.error('Document generation error:', error.message);
+    if (error.properties && error.properties.errors) {
+      console.error('Docxtemplater errors:', JSON.stringify(error.properties.errors, null, 2));
+    }
     res.status(500).json({
       success: false,
-      error: error.message || 'Failed to generate document'
+      error: error.message || 'Failed to generate document',
+      details: error.properties?.errors?.map(e => e.message) ?? []
     });
   }
 });

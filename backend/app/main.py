@@ -1,3 +1,4 @@
+import logging
 from fastapi import BackgroundTasks, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -6,6 +7,8 @@ import httpx
 from .models import LOIFields, LOIFieldsWithConfidence
 from .services import LOIExtractionService
 from .config import get_settings
+
+logger = logging.getLogger(__name__)
 
 app = FastAPI(
     title="CRE LOI Parser API",
@@ -148,23 +151,38 @@ async def generate_document(request: GenerateDocRequest):
             response = await client.post(
                 f"{settings.document_service_url}/generate",
                 json=request.loi_data.model_dump(mode='json'),
-                timeout=30.0
+                timeout=60.0
             )
 
             if response.status_code != 200:
+                logger.error(
+                    "Document service returned %d: %s",
+                    response.status_code,
+                    response.text[:500],
+                )
                 raise HTTPException(
-                    status_code=response.status_code,
-                    detail="Document generation service error"
+                    status_code=502,
+                    detail=f"Document service error ({response.status_code}): {response.text[:200]}"
                 )
 
             return response.json()
 
+    except HTTPException:
+        raise
+    except httpx.TimeoutException as e:
+        logger.error("Document service timed out: %s", str(e))
+        raise HTTPException(
+            status_code=504,
+            detail="Document service timed out. It may be starting up — please retry in 30 seconds."
+        )
     except httpx.RequestError as e:
+        logger.error("Document service connection error: %s", str(e))
         raise HTTPException(
             status_code=503,
             detail=f"Document service unavailable: {str(e)}"
         )
     except Exception as e:
+        logger.exception("Unexpected error in generate_document")
         raise HTTPException(
             status_code=500,
             detail=f"Document generation failed: {str(e)}"

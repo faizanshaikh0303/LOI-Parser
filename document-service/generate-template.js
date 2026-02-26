@@ -12,11 +12,6 @@ const path = require('path');
 
 const TEMPLATE_PATH = path.join(__dirname, 'template.docx');
 
-if (fs.existsSync(TEMPLATE_PATH)) {
-  console.log('template.docx already exists, skipping generation.');
-  process.exit(0);
-}
-
 function p(text, opts = {}) {
   return new Paragraph({
     children: [new TextRun({ text, ...opts })],
